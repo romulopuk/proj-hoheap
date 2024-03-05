@@ -1,0 +1,20 @@
+#ocorrencia-sessao {
+    max-width: 50%;
+}
+
+.no-border-table {
+    border-collapse: separate;
+}
+
+.no-border-tbody {
+    border: none;
+    padding-bottom: none;
+}
+
+td {
+    padding-left: 0px;
+    padding-right: 10px;
+    padding-bottom: 0px;
+}
+
+

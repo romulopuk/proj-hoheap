@@ -9,6 +9,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Seu arquivo CSS personalizado -->
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Configuração Gráfico -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Year', 'Vita', 'Graneli', 'Particular'],
+                ['Jan', 1000, 400, 670],
+                ['Fev', 1170, 460, 450],
+                ['Mar', 660, 1120, 850],
+                ['Abr', 1030, 540, 1000]
+            ]);
+
+            var options = {
+                title: 'Receita Mensal',
+                hAxis: { title: 'Mês', titleTextStyle: { color: '#333' } },
+                vAxis: { minValue: 0 }
+            };
+
+            var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
 </head>
 
 <body>
@@ -16,7 +42,14 @@
         <nav>
             <div class="nav-wrapper purple lighten-3">
                 <a href="#" class="brand-logo">HoheAP</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#agenda">Agenda</a></li>
+                    <li><a href="#financeiro">Financeiro</a></li>
+                </ul>
+
+                <ul id="mobile-demo" class="sidenav">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#agenda">Agenda</a></li>
                     <li><a href="#financeiro">Financeiro</a></li>
@@ -29,87 +62,95 @@
         <section id="home">
             <!-- Conteúdo da seção Home com gráficos e próximos atendimentos -->
             <div class="row">
-                <div class="col s12 m6">
+                <div class="col s12 m12 l6">
                     <!-- Gráficos sobre mês e remuneração -->
                     <div class="card">
-                        <div class="card-content">
+                        <div class="card-content s12 m12 overflow-x-auto" style="height: 47.3vh;">
                             <span class="card-title">Gráficos</span>
                             <!-- Insira seus gráficos aqui -->
+                            <div id="chart_div" style="width: 90%;"></div>
                         </div>
                     </div>
                 </div>
-                <div class="col s12 m6">
+
+                <div class="col s12 m12 l6">
+
+                    <!-- Período -->
+                    <div class="card">
+                        <div class="card-content s12 m12 l6">
+                            <span class="card-title" style="margin-bottom: 0px;">Período</span>
+                            <div class="row" style="margin: 0px;">
+                                <div class="input-field col s6 m6">
+                                    <label>Ano</label>
+                                </div>
+                                <div class="input-field col s6 m6">
+                                    <select id="ano">
+                                        <option value="" disabled selected>Selecionar</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2024">2024</option>
+                                        <!-- Adicione mais opções conforme necessário -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Próximos atendimentos -->
                     <div class="card">
-                        <div class="card-content">
-                            <span class="card-title">Próximos Atendimentos</span>
+                        <div class="card-content s12 m12 l6 overflow-x-auto">
+                            <span class="card-title" style="margin-bottom: 0px;">Próximos Atendimentos</span>
                             <!-- Insira a lista de próximos atendimentos aqui -->
-                            <ul class="collection">
-                                <li class="collection-item">Atendimento 1</li>
-                                <li class="collection-item">Atendimento 2</li>
-                                <li class="collection-item">Atendimento 3</li>
-                            </ul>
+                            <table class="no-border-table">
+                                <tbody class="collection no-border-tbody">
+                                    <tr class="collection-item">
+                                        <td>Joao</td>
+                                        <td>Quarta</td>
+                                        <td>17:30</td>
+                                    </tr>
+                                    <tr class="collection-item">
+                                        <td>Carlos </td>
+                                        <td>Sexta</td>
+                                        <td>12:00</td>
+                                    </tr>
+                                    <tr class="collection-item">
+                                        <td>Alberto </td>
+                                        <td>Sábado</td>
+                                        <td>09:00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
 
-        <section id="agenda">
-            <div class="row">
-                <div class="input-field col s6">
-                    <label>Ano</label>
-                </div>
-                <div class="input-field col s6">
-                    <label>Mês</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s6">
-                    <select id="ano" class="browser-default">
-                        <option value="" disabled selected>Escolha um ano</option>
-                        <option value="2023">2023</option>
-                        <option value="2024">2024</option>
-                        <!-- Adicione mais opções conforme necessário -->
-                    </select>
-
-                </div>
-                <div class="input-field col s6">
-                    <select id="mes" class="browser-default">
-                        <option value="" disabled selected>Escolha um mês</option>
-                        <option value="1">Janeiro</option>
-                        <option value="2">Fevereiro</option>
-                        <!-- Adicione mais opções conforme necessário -->
-                    </select>
-                </div>
-            </div>
-            <!-- Lista de itens da agenda -->
-            <ul id="agenda-list" class="collection">
-                <!-- Itens da agenda serão adicionados dinamicamente aqui -->
-            </ul>
-        </section>
 
         <section id="financeiro">
             <!-- Seletores de Mês e Ano -->
             <!-- Tabela com as 6 colunas -->
             <div class="row">
-                <div class="input-field col s6">
+                <div class="input-field col s12 l6">
                     <select id="mes-financeiro">
+                        <option value="" disabled selected>Selecionar</option>
                         <option value="1">Janeiro</option>
                         <option value="2">Fevereiro</option>
                         <!-- Adicione mais opções conforme necessário -->
                     </select>
-                    <label>Mês</label>
+                    <label>Mês Financeiro</label>
                 </div>
-                <div class="input-field col s6">
+                <div class="input-field col s12 l6">
                     <select id="ano-financeiro">
+                        <option value="" disabled selected>Selecionar</option>
                         <option value="2023">2023</option>
                         <option value="2024">2024</option>
                         <!-- Adicione mais opções conforme necessário -->
                     </select>
-                    <label>Ano</label>
+                    <label>Ano Financeiro</label>
                 </div>
             </div>
+            <br />
             <!-- Tabela com as 6 colunas -->
             <table>
                 <thead>
@@ -125,11 +166,33 @@
                 </thead>
                 <tbody id="financeiro-table">
                     <!-- Os dados financeiros serão adicionados dinamicamente aqui -->
+                    <tr>
+                        <td>Ana</td>
+                        <td>R$300,00</td>
+                        <td style="width: 20%;">
+                            <div class="input-field col s12">
+                                <select id="ocorrencia-sessao">
+                                    <option value="" disabled selected>Selecionar</option>
+                                    <option value="MENSAL">Mensal</option>
+                                    <option value="QUINZENAL">Quinzenal</option>
+                                    <option value="SEMANAL">Semanal</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td>30 m</td>
+                        <td>R$30,00</td>
+                        <td>Dia 10</td>
+                        <td>
+                            <label>
+                                <input id="status-pago" type="checkbox" class="filled-in" checked="checked" />
+                                <span></span>
+                            </label>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </section>
     </main>
-
     <!-- Materialize JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- Seu arquivo JavaScript personalizado -->
