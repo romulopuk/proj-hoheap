@@ -42,9 +42,9 @@
     <header>
         <nav>
             <div class="nav-wrapper purple lighten-3">
-                <a href="#" class="brand-logo">HoheAP</a>
+                <a href="#" class="brand-logo" style="padding-left: 15px;">HoheAP</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <ul id="nav-mobile" class="right hide-on-med-and-down" style="padding-right: 15px;">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#agenda">Agenda</a></li>
                     <li><a href="#financeiro">Financeiro</a></li>
@@ -152,46 +152,51 @@
                 </div>
             </div>
             <br />
+
             <!-- Tabela com as 6 colunas -->
-            <table>
-                <thead>
-                    <tr>
-                        <th>Paciente</th>
-                        <th>Total Mensal</th>
-                        <th>Ocorrência</th>
-                        <th>Sessão</th>
-                        <th>Valor Sessão</th>
-                        <th>Vencimentos</th>
-                        <th>Pago</th>
-                    </tr>
-                </thead>
-                <tbody id="financeiro-table">
-                    <!-- Os dados financeiros serão adicionados dinamicamente aqui -->
-                    <tr>
-                        <td>Ana</td>
-                        <td>R$300,00</td>
-                        <td style="width: 20%;">
-                            <div class="input-field col s12">
-                                <select id="ocorrencia-sessao">
-                                    <option value="" disabled selected>Selecionar</option>
-                                    <option value="MENSAL">Mensal</option>
-                                    <option value="QUINZENAL">Quinzenal</option>
-                                    <option value="SEMANAL">Semanal</option>
-                                </select>
-                            </div>
-                        </td>
-                        <td>30 m</td>
-                        <td>R$30,00</td>
-                        <td>Dia 10</td>
-                        <td>
-                            <label>
-                                <input id="status-pago" type="checkbox" class="filled-in" checked="checked" />
-                                <span></span>
-                            </label>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="card">
+                <div class="card-content s12 m12 l6 overflow-x-auto">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Paciente</th>
+                                <th>Total Mensal</th>
+                                <th>Ocorrência</th>
+                                <th>Sessão</th>
+                                <th>Valor Sessão</th>
+                                <th>Vencimentos</th>
+                                <th>Pago</th>
+                            </tr>
+                        </thead>
+                        <tbody id="financeiro-table">
+                            <!-- Os dados financeiros serão adicionados dinamicamente aqui -->
+                            <tr>
+                                <td>Ana</td>
+                                <td>R$300,00</td>
+                                <td style="width: 20%;">
+                                    <div class="input-field col s12">
+                                        <select id="ocorrencia-sessao">
+                                            <option value="" disabled selected>Selecionar</option>
+                                            <option value="MENSAL">Mensal</option>
+                                            <option value="QUINZENAL">Quinzenal</option>
+                                            <option value="SEMANAL">Semanal</option>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td>30 m</td>
+                                <td>R$30,00</td>
+                                <td>Dia 10</td>
+                                <td>
+                                    <label>
+                                        <input id="status-pago" type="checkbox" class="filled-in" checked="checked" />
+                                        <span></span>
+                                    </label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </section>
     </main>
     <!-- Materialize JavaScript -->
