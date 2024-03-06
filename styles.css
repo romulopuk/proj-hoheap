@@ -2,6 +2,10 @@
     max-width: 50%;
 }
 
+.card {
+    border-radius: 20px;
+}
+
 .no-border-table {
     border-collapse: separate;
 }
